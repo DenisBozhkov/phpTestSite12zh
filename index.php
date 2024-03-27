@@ -5,6 +5,7 @@
 	<th>Id</th>
 	<th>First name</th>
 	<th>Last name</th>
+	<th>Update</th>
 	<th>Delete</th>
 </tr>
 <?php
@@ -36,6 +37,7 @@
 		echo "<td>".$data['id']."</td>";
 		echo "<td>".$data['firstname']."</td>";
 		echo "<td>".$data['lastname']."</td>";
+		echo '<td><a href="update.php?id='.$data["id"].'">Update</a></td>';
 		echo '<td><a href="delete.php?id='.$data["id"].'">Delete</a></td>';
 		echo "</tr>";
 	}
