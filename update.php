@@ -1,4 +1,9 @@
 <?php
+	session_start();
+	if(!isset($_SESSION['user']))
+	{
+		Header("Location:login.html");
+	}
 	if(!isset($_GET['save']))
 	{
 		try

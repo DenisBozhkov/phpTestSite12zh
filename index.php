@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if(!isset($_SESSION['user']))
+	{
+		Header("Location:login.html");
+	}
+	echo "<h2>Hello, {$_SESSION['user']}! | <a href='logout.php'>Log out</a></h2>";
+?>
 <h1>Users</h1>
 <a href="create.html">Create new user</a>
 <table border="1">
