@@ -1,14 +1,19 @@
 <?php
 	session_start();
-	if(isset($_SESSION['user']))
+	if(isset($_SESSION['id']))
 	{
 		Header("Location:index.php");
 	}
 	if(!isset($_POST['username'])||!isset($_POST['password']))
 		die('<h2>No login data!</h2>');
-	if($_POST['password']=='123'&&$_POST['username']=='admin')
+	$link=mysqli_connect("localhost","root","","testPHPSite");
+	$res=mysqli_query($link,"select * from users where username='{$_POST['username']}'");
+	$data=mysqli_fetch_array($res);
+	if($data&&$data['password']==md5(trim($_POST['password'])))
 	{
-		$_SESSION['user']='admin';
+		$_SESSION['id']=$data['id'];
+		$_SESSION['user']=$data['username'];
+		$_SESSION['admin']=$data['admin'];
 		Header("Location:index.php");
 	}
 	else die('<h2>Invalid login data!</h2><a href="login.html">Go back</a>');
